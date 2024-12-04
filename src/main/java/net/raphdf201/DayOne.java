@@ -23,8 +23,7 @@ public class DayOne {
         sortLists();
         int score = 0;
         Map<Integer, Integer> rightMap = getNumberOccurrences(day1RightList);
-        for (int i = 0; i < day1LeftList.length; i++) {
-            int num = day1LeftList[i];
+        for (int num : day1LeftList) {
             int occs;
             try {
                 occs = rightMap.get(num);
@@ -41,7 +40,7 @@ public class DayOne {
         Arrays.sort(day1RightList);
     }
 
-    public static Map<Integer, Integer> getNumberOccurrences(int[] numbers) {
+    private static Map<Integer, Integer> getNumberOccurrences(int[] numbers) {
         // Create a HashMap to store the number and its occurrences
         Map<Integer, Integer> occurrences = new HashMap<>();
 

@@ -37,7 +37,7 @@ public class DayTwo {
         System.out.println("Number of safe reports: " + safeCount);
     }
 
-    public static boolean isSafeReport(int[] report) {
+    private static boolean isSafeReport(int[] report) {
         Boolean increasing = null;
         for (int i = 0; i < report.length - 1; i++) {
             int diff = report[i + 1] - report[i];
@@ -63,7 +63,7 @@ public class DayTwo {
         return true;
     }
 
-    public static boolean isSafeWithDampener(int[] report) {
+    private static boolean isSafeWithDampener(int[] report) {
         if (isSafeReport(report)) {
             return true;
         }

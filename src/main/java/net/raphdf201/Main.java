@@ -18,6 +18,11 @@ public class Main {
                 DayTwo.partOne();
                 DayTwo.partTwo();
                 break;
+            case 3:
+                System.out.println("Day three :");
+                DayThree.partOne();
+                DayThree.partTwo();
+                break;
         }
     }
 }
