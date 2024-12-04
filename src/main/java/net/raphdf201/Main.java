@@ -23,6 +23,11 @@ public class Main {
                 DayThree.partOne();
                 DayThree.partTwo();
                 break;
+            case 4:
+                System.out.println("Day four :");
+                DayFour.partOne();
+                DayFour.partTwo();
+                break;
         }
     }
 }
