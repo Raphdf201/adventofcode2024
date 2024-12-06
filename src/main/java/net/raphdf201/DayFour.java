@@ -1,8 +1,10 @@
 package net.raphdf201;
 
-import static net.raphdf201.Inputs.day4XmasArr;
+import static net.raphdf201.Inputs.day4Xmas;
 
 public class DayFour {
+    public static final String[] day4XmasArr = day4Xmas.split("\n");
+
     public static void partOne() {
         System.out.println("Part one :");
         System.out.println("Total XMAS occurences : " + countOccurrences(day4XmasArr, "XMAS"));
