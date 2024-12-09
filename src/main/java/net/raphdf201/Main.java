@@ -31,10 +31,13 @@ public class Main {
             case 5:
                 System.out.println("Day five :");
                 DayFive.partOne();
-                DayFive.partTwo();
+                // DayFive.partTwo();
                 break;
-            default:
-                System.out.println("Enter a number between 1 to 5");
+            case 6:
+                System.out.println("Day six :");
+                DaySix.partOne();
+                DaySix.partTwo();
+                break;
         }
     }
 }

@@ -21,7 +21,7 @@ public class DayFive {
         return update.get(midIndex);
     }
 
-    public static int solve(String rulesInput, String updatesInput) {
+    private static int solve(String rulesInput, String updatesInput) {
         String[] ruleLines = rulesInput.split("\n");
         String[] updateLines = updatesInput.split("\n");
 
@@ -66,7 +66,7 @@ public class DayFive {
         return true;
     }
 
-    public static int solvePartTwo(String rulesInput, String updatesInput) {
+    private static int solvePartTwo(String rulesInput, String updatesInput) {
         String[] ruleLines = rulesInput.split("\n");
         String[] updateLines = updatesInput.split("\n");
 
