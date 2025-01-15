@@ -31,12 +31,17 @@ public class Main {
             case 5:
                 System.out.println("Day five :");
                 DayFive.partOne();
-                // DayFive.partTwo();
+                DayFive.partTwo();
                 break;
             case 6:
                 System.out.println("Day six :");
                 DaySix.partOne();
                 DaySix.partTwo();
+                break;
+            case 7:
+                System.out.println("Day seven :");
+                DaySeven.partOne();
+                DaySeven.partTwo();
                 break;
         }
     }
