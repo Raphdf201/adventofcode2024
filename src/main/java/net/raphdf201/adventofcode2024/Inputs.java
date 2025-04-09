@@ -1,4 +1,4 @@
-package net.raphdf201;
+package net.raphdf201.adventofcode2024;
 
 public class Inputs {
     public static final int[] day1LeftList = {

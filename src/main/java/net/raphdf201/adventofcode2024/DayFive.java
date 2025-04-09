@@ -1,19 +1,19 @@
-package net.raphdf201;
+package net.raphdf201.adventofcode2024;
 
 import java.util.*;
 
-import static net.raphdf201.Inputs.day5Rules;
-import static net.raphdf201.Inputs.day5Updates;
-
 public class DayFive {
+    private static final String[] ruleLines = Inputs.day5Rules.split("\n");
+    private static final String[] updateLines = Inputs.day5Updates.split("\n");
+
     public static void partOne() {
         System.out.println("Part one :");
-        System.out.println("Middle page total : " + solve(day5Rules, day5Updates));
+        System.out.println("Middle page total : " + solve());
     }
 
     public static void partTwo() {
         System.out.println("Part two :");
-        System.out.println("Fixed middle page total : " + solvePartTwo(day5Rules, day5Updates));
+        System.out.println("Fixed middle page total : " + solvePartTwo());
     }
 
     private static int getMiddlePage(List<Integer> update) {
@@ -21,10 +21,7 @@ public class DayFive {
         return update.get(midIndex);
     }
 
-    private static int solve(String rulesInput, String updatesInput) {
-        String[] ruleLines = rulesInput.split("\n");
-        String[] updateLines = updatesInput.split("\n");
-
+    private static int solve() {
         Map<Integer, List<Integer>> graph = new HashMap<>();
 
         for (String rule : ruleLines) {
@@ -66,11 +63,8 @@ public class DayFive {
         return true;
     }
 
-    private static int solvePartTwo(String rulesInput, String updatesInput) {
-        String[] ruleLines = rulesInput.split("\n");
-        String[] updateLines = updatesInput.split("\n");
-
-        Map<Integer, List<Integer>> graph = buildGraph(ruleLines);
+    private static int solvePartTwo() {
+        Map<Integer, List<Integer>> graph = buildGraph();
 
         int fixedMiddleSum = 0;
 
@@ -78,17 +72,17 @@ public class DayFive {
             List<Integer> update = parseUpdate(updateLine);
 
             if (!isValidOrder(update, graph)) {
-                update.sort(Collections.reverseOrder());
-                fixedMiddleSum += getMiddlePage(update);
+                List<Integer> sorted = topologicalSort(update, graph);
+                fixedMiddleSum += getMiddlePage(sorted);
             }
         }
         return fixedMiddleSum;
     }
 
 
-    private static Map<Integer, List<Integer>> buildGraph(String[] ruleLines) {
+    private static Map<Integer, List<Integer>> buildGraph() {
         Map<Integer, List<Integer>> graph = new HashMap<>();
-        for (String rule : ruleLines) {
+        for (String rule : DayFive.ruleLines) {
             String[] parts = rule.split("\\|");
             int before = Integer.parseInt(parts[0]);
             int after = Integer.parseInt(parts[1]);
@@ -105,4 +99,49 @@ public class DayFive {
         }
         return update;
     }
+
+    private static List<Integer> topologicalSort(List<Integer> update, Map<Integer, List<Integer>> fullGraph) {
+        Map<Integer, List<Integer>> graph = new HashMap<>();
+        Map<Integer, Integer> inDegree = new HashMap<>();
+
+        // Initialize graph and in-degree
+        for (int page : update) {
+            graph.put(page, new ArrayList<>());
+            inDegree.put(page, 0);
+        }
+
+        // Build graph for this update
+        for (int from : update) {
+            List<Integer> toList = fullGraph.getOrDefault(from, List.of());
+            for (int to : toList) {
+                if (update.contains(to)) {
+                    graph.get(from).add(to);
+                    inDegree.put(to, inDegree.get(to) + 1);
+                }
+            }
+        }
+
+        // Topological sort (Kahn's algorithm)
+        Queue<Integer> queue = new LinkedList<>();
+        for (int node : inDegree.keySet()) {
+            if (inDegree.get(node) == 0) {
+                queue.add(node);
+            }
+        }
+
+        List<Integer> result = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            result.add(node);
+            for (int neighbor : graph.get(node)) {
+                inDegree.put(neighbor, inDegree.get(neighbor) - 1);
+                if (inDegree.get(neighbor) == 0) {
+                    queue.add(neighbor);
+                }
+            }
+        }
+
+        return result;
+    }
+
 }

@@ -1,6 +1,6 @@
-package net.raphdf201;
+package net.raphdf201.adventofcode2024;
 
-import static net.raphdf201.Inputs.day4Xmas;
+import static net.raphdf201.adventofcode2024.Inputs.day4Xmas;
 
 public class DayFour {
     public static final String[] day4XmasArr = day4Xmas.split("\n");

@@ -1,11 +1,11 @@
-package net.raphdf201;
+package net.raphdf201.adventofcode2024;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.raphdf201.Inputs.day1LeftList;
-import static net.raphdf201.Inputs.day1RightList;
+import static net.raphdf201.adventofcode2024.Inputs.day1LeftList;
+import static net.raphdf201.adventofcode2024.Inputs.day1RightList;
 
 public class DayOne {
     public static void partOne() {

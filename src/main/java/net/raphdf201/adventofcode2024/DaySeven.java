@@ -1,6 +1,6 @@
-package net.raphdf201;
+package net.raphdf201.adventofcode2024;
 
-import static net.raphdf201.Inputs.day7Equations;
+import static net.raphdf201.adventofcode2024.Inputs.day7Equations;
 
 public class DaySeven {
     private static final String[] lines = day7Equations.split("\n");
@@ -21,7 +21,9 @@ public class DaySeven {
         }
     }
 
-    public static void partTwo() {}
+    public static void partTwo() {
+
+    }
 
     private static boolean checkEqual(int number, int total) {
         return number == total;

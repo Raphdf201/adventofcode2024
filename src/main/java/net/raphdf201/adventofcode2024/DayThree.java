@@ -1,9 +1,9 @@
-package net.raphdf201;
+package net.raphdf201.adventofcode2024;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static net.raphdf201.Inputs.day3Program;
+import static net.raphdf201.adventofcode2024.Inputs.day3Program;
 
 public class DayThree {
     public static void partOne() {

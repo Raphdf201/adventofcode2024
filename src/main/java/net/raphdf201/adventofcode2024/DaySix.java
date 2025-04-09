@@ -1,9 +1,9 @@
-package net.raphdf201;
+package net.raphdf201.adventofcode2024;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static net.raphdf201.Inputs.day6Map;
+import static net.raphdf201.adventofcode2024.Inputs.day6Map;
 
 public class DaySix {
     private static final char[] officers = {'<', '>', '^', 'v'};

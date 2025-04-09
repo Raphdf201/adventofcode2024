@@ -1,8 +1,8 @@
-package net.raphdf201;
+package net.raphdf201.adventofcode2024;
 
 import java.util.Arrays;
 
-import static net.raphdf201.Inputs.day2Reports;
+import static net.raphdf201.adventofcode2024.Inputs.day2Reports;
 
 public class DayTwo {
     public static void partOne() {
