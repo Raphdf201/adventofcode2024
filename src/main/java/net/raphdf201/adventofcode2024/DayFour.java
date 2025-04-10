@@ -6,18 +6,18 @@ public class DayFour {
     public static final String[] day4XmasArr = day4Xmas.split("\n");
 
     public static void partOne() {
-        System.out.println("Part one :");
-        System.out.println("Total XMAS occurences : " + countOccurrences(day4XmasArr, "XMAS"));
+        System.out.print("4-1 : ");
+        System.out.println(countOccurrences());
     }
 
     public static void partTwo() {
-        System.out.println("Part two :");
-        System.out.println("Total X-MAS occurences : " + countXMASPatterns(day4XmasArr));
+        System.out.print("4-2 : ");
+        System.out.println(countXMASPatterns());
     }
 
-    private static int countOccurrences(String[] lines, String target) {
-        int rows = lines.length;
-        int cols = lines[0].length();
+    private static int countOccurrences() {
+        int rows = DayFour.day4XmasArr.length;
+        int cols = DayFour.day4XmasArr[0].length();
         int count = 0;
 
         int[][] directions = {
@@ -34,7 +34,7 @@ public class DayFour {
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
                 for (int[] dir : directions) {
-                    if (matches(lines, target, r, c, dir[0], dir[1], rows, cols)) {
+                    if (matches(r, c, dir[0], dir[1], rows, cols)) {
                         count++;
                     }
                 }
@@ -43,27 +43,27 @@ public class DayFour {
         return count;
     }
 
-    private static boolean matches(String[] lines, String target, int r, int c, int dr, int dc, int rows, int cols) {
-        for (int i = 0; i < target.length(); i++) {
+    private static boolean matches(int r, int c, int dr, int dc, int rows, int cols) {
+        for (int i = 0; i < "XMAS".length(); i++) {
             int nr = r + i * dr;
             int nc = c + i * dc;
 
-            if (nr < 0 || nr >= rows || nc < 0 || nc >= cols || lines[nr].charAt(nc) != target.charAt(i)) {
+            if (nr < 0 || nr >= rows || nc < 0 || nc >= cols || DayFour.day4XmasArr[nr].charAt(nc) != "XMAS".charAt(i)) {
                 return false;
             }
         }
         return true;
     }
 
-    private static int countXMASPatterns(String[] lines) {
-        int rows = lines.length;
-        int cols = lines[0].length();
+    private static int countXMASPatterns() {
+        int rows = DayFour.day4XmasArr.length;
+        int cols = DayFour.day4XmasArr[0].length();
         int count = 0;
 
         for (int r = 1; r < rows - 1; r++) {
             for (int c = 1; c < cols - 1; c++) {
-                if (lines[r].charAt(c) == 'A') {
-                    if (isValidXMAS(lines, r, c)) {
+                if (DayFour.day4XmasArr[r].charAt(c) == 'A') {
+                    if (isValidXMAS(r, c)) {
                         count++;
                     }
                 }
@@ -72,13 +72,13 @@ public class DayFour {
         return count;
     }
 
-    private static boolean isValidXMAS(String[] lines, int r, int c) {
-        char topLeft = lines[r - 1].charAt(c - 1);
-        char topRight = lines[r - 1].charAt(c + 1);
-        char bottomLeft = lines[r + 1].charAt(c - 1);
-        char bottomRight = lines[r + 1].charAt(c + 1);
+    private static boolean isValidXMAS(int r, int c) {
+        char topLeft = DayFour.day4XmasArr[r - 1].charAt(c - 1);
+        char topRight = DayFour.day4XmasArr[r - 1].charAt(c + 1);
+        char bottomLeft = DayFour.day4XmasArr[r + 1].charAt(c - 1);
+        char bottomRight = DayFour.day4XmasArr[r + 1].charAt(c + 1);
 
-        char middle = lines[r].charAt(c);
+        char middle = DayFour.day4XmasArr[r].charAt(c);
 
         return (isMAS(topLeft, middle, bottomRight) && isMAS(bottomLeft, middle, topRight));
     }

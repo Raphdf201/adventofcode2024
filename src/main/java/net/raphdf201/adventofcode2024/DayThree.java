@@ -7,7 +7,7 @@ import static net.raphdf201.adventofcode2024.Inputs.day3Program;
 
 public class DayThree {
     public static void partOne() {
-        System.out.println("Part one :");
+        System.out.print("3-1 : ");
         String regex = "mul\\((\\d+),(\\d+)\\)";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(day3Program);
@@ -19,11 +19,11 @@ public class DayThree {
             total += Integer.parseInt(firstValue) * Integer.parseInt(secondValue);
         }
 
-        System.out.println("Total : " + total);
+        System.out.println(total);
     }
 
     public static void partTwo() {
-        System.out.println("Part two :");
+        System.out.print("3-2 : ");
         String regex = "mul\\((\\d+),(\\d+)\\)|do\\(\\)|don't\\(\\)";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(day3Program);
@@ -47,6 +47,6 @@ public class DayThree {
             }
         }
 
-        System.out.println("Total : " + total);
+        System.out.println(total);
     }
 }

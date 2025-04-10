@@ -10,6 +10,7 @@ public class DaySix {
     private static final int[][] DELTAS = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}}; // row, col deltas
 
     public static void partOne() {
+        System.out.print("6-1 : ");
         String[] map = day6Map.split("\n");
         int rows = map.length;
         int cols = map[0].length();
@@ -65,15 +66,11 @@ public class DaySix {
             visitedStates.add(nextState);
         }
 
-        System.out.println("Part one:");
-        System.out.println("Visited positions: " + visitedTiles.size());
-    }
-
-    private static String state(int row, int col, int dir) {
-        return row + "," + col + "," + dir;
+        System.out.println(visitedTiles.size());
     }
 
     public static void partTwo() {
+        System.out.print("6-2 : ");
         String[] originalMap = day6Map.split("\n");
         int rows = originalMap.length;
         int cols = originalMap[0].length();
@@ -118,8 +115,11 @@ public class DaySix {
             }
         }
 
-        System.out.println("Part two:");
-        System.out.println("Possible obstructions: " + loopCount);
+        System.out.println(loopCount);
+    }
+
+    private static String state(int row, int col, int dir) {
+        return row + "," + col + "," + dir;
     }
 
     private static boolean simulatesLoop(char[][] map, int row, int col, int dir) {

@@ -7,13 +7,13 @@ public class DayFive {
     private static final String[] updateLines = Inputs.day5Updates.split("\n");
 
     public static void partOne() {
-        System.out.println("Part one :");
-        System.out.println("Middle page total : " + solve());
+        System.out.print("5-1 : ");
+        System.out.println(solve());
     }
 
     public static void partTwo() {
-        System.out.println("Part two :");
-        System.out.println("Fixed middle page total : " + solvePartTwo());
+        System.out.print("5-2 : ");
+        System.out.println(solvePartTwo());
     }
 
     private static int getMiddlePage(List<Integer> update) {

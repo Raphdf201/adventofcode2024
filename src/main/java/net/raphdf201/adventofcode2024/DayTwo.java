@@ -6,7 +6,7 @@ import static net.raphdf201.adventofcode2024.Inputs.day2Reports;
 
 public class DayTwo {
     public static void partOne() {
-        System.out.println("Part one");
+        System.out.print("2-1 : ");
         String[] rows = day2Reports.split("\n");
         int[][] serialized = new int[rows.length][];
         for (int i = 0; i < rows.length; i++) {
@@ -18,11 +18,12 @@ public class DayTwo {
         long safeCount = Arrays.stream(serialized)
                 .filter(DayTwo::isSafeReport)
                 .count();
-        System.out.println("Number of safe reports: " + safeCount);
+
+        System.out.println(safeCount);
     }
 
     public static void partTwo() {
-        System.out.println("Part two");
+        System.out.print("2-2 : ");
         String[] rows = day2Reports.split("\n");
         int[][] serialized = new int[rows.length][];
         for (int i = 0; i < rows.length; i++) {
@@ -34,7 +35,8 @@ public class DayTwo {
         long safeCount = Arrays.stream(serialized)
                 .filter(DayTwo::isSafeWithDampener)
                 .count();
-        System.out.println("Number of safe reports: " + safeCount);
+
+        System.out.println(safeCount);
     }
 
     private static boolean isSafeReport(int[] report) {
