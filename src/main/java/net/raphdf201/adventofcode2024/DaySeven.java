@@ -1,7 +1,6 @@
 package net.raphdf201.adventofcode2024;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigInteger;
 
 import static net.raphdf201.adventofcode2024.Inputs.day7Equations;
 
@@ -26,72 +25,46 @@ public class DaySeven {
 
     public static void partTwo() {
         System.out.print("7-2 : ");
-        long total = 0;
+        BigInteger total = BigInteger.ZERO;
         for (String equation : lines) {
             String[] eq = equation.split(": ");
-            long target = Long.parseLong(eq[0]);
+            BigInteger target = new BigInteger(eq[0]);
             int[] numbers = toIntArray(eq[1].split(" "));
 
             if (canReachTargetWithConcat(target, numbers)) {
-                total += target;
+                total = total.add(target);
             }
         }
         System.out.println(total);
     }
 
-    public static boolean canReachTargetWithConcat(long target, int[] numbers) {
-        int n = numbers.length;
-        int totalCombinations = (int) Math.pow(3, n - 1); // +, *, ||
 
-        for (int i = 0; i < totalCombinations; i++) {
-            char[] ops = new char[n - 1];
-            int combo = i;
-            for (int j = 0; j < n - 1; j++) {
-                int op = combo % 3;
-                ops[j] = op == 0 ? '+' : (op == 1 ? '*' : '|');
-                combo /= 3;
-            }
-
-            if (evaluateWithConcat(numbers, ops) == target) {
-                return true;
-            }
-        }
-        return false;
+    public static boolean canReachTargetWithConcat(BigInteger target, int[] numbers) {
+        return dfs(BigInteger.valueOf(numbers[0]), 1, numbers, target);
     }
 
-    private static long evaluateWithConcat(int[] numbers, char[] ops) {
-        List<Long> values = new ArrayList<>();
-        List<Character> operations = new ArrayList<>();
-
-        // Start with the first number
-        long current = numbers[0];
-
-        for (int i = 0; i < ops.length; i++) {
-            char op = ops[i];
-            int next = numbers[i + 1];
-
-            if (op == '|') {
-                // Concatenate numbers as strings and parse back to long
-                current = Long.parseLong(String.valueOf(current) + next);
-            } else {
-                values.add(current);
-                operations.add(op);
-                current = next;
-            }
+    private static boolean dfs(BigInteger currentValue, int index, int[] numbers, BigInteger target) {
+        if (index == numbers.length) {
+            return currentValue.equals(target);
         }
 
-        values.add(current); // Add the last value
+        BigInteger next = BigInteger.valueOf(numbers[index]);
 
-        // Now evaluate left-to-right using the values and operations
-        long result = values.getFirst();
-        for (int i = 0; i < operations.size(); i++) {
-            char op = operations.get(i);
-            long next = values.get(i + 1);
-            result = (op == '+') ? result + next : result * next;
+        // Try +
+        if (dfs(currentValue.add(next), index + 1, numbers, target)) {
+            return true;
         }
 
-        return result;
+        // Try *
+        if (dfs(currentValue.multiply(next), index + 1, numbers, target)) {
+            return true;
+        }
+
+        // Try ||
+        BigInteger concat = new BigInteger(currentValue + next.toString());
+        return dfs(concat, index + 1, numbers, target);
     }
+
 
     public static int[] toIntArray(String[] array) {
         int[] tmp = new int[array.length];
