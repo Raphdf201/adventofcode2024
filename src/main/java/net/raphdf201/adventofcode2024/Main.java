@@ -16,5 +16,7 @@ public class Main {
         DaySix.partTwo();
         DaySeven.partOne();
         DaySeven.partTwo();
+        DayEight.partOne();
+        DayEight.partTwo();
     }
 }

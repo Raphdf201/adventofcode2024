@@ -39,7 +39,7 @@ public class DaySeven {
     }
 
 
-    public static boolean canReachTargetWithConcat(BigInteger target, int[] numbers) {
+    private static boolean canReachTargetWithConcat(BigInteger target, int[] numbers) {
         return dfs(BigInteger.valueOf(numbers[0]), 1, numbers, target);
     }
 
@@ -66,7 +66,7 @@ public class DaySeven {
     }
 
 
-    public static int[] toIntArray(String[] array) {
+    private static int[] toIntArray(String[] array) {
         int[] tmp = new int[array.length];
         for (int i = 0; i < array.length; i++) {
             tmp[i] = Integer.parseInt(array[i]);
