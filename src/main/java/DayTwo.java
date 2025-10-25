@@ -32,8 +32,7 @@ public class DayTwo {
      * <p>So, in this example, <code><em>2</em></code> reports are <em>safe</em>.</p>
      * <p>Analyze the unusual data from the engineers. <strong>How many reports are safe?</strong></p>
      */
-    public static void partOne() {
-        System.out.print("2-1 : ");
+    public static Long partOne() {
         String[] rows = Inputs.day2Reports.split("\n");
         int[][] serialized = new int[rows.length][];
         for (int i = 0; i < rows.length; i++) {
@@ -42,11 +41,10 @@ public class DayTwo {
                     .mapToInt(Integer::parseInt)
                     .toArray();
         }
-        long safeCount = Arrays.stream(serialized)
+
+        return Arrays.stream(serialized)
                 .filter(DayTwo::isSafeReport)
                 .count();
-
-        System.out.println(safeCount);
     }
 
     /**
@@ -65,8 +63,7 @@ public class DayTwo {
      * <p>Thanks to the Problem Dampener, <code><em>4</em></code> reports are actually <em>safe</em>!</p>
      * <p>Update your analysis by handling situations where the Problem Dampener can remove a single level from unsafe reports. <strong>How many reports are now safe?</strong></p>
      */
-    public static void partTwo() {
-        System.out.print("2-2 : ");
+    public static Long partTwo() {
         String[] rows = Inputs.day2Reports.split("\n");
         int[][] serialized = new int[rows.length][];
         for (int i = 0; i < rows.length; i++) {
@@ -75,11 +72,10 @@ public class DayTwo {
                     .mapToInt(Integer::parseInt)
                     .toArray();
         }
-        long safeCount = Arrays.stream(serialized)
+
+        return Arrays.stream(serialized)
                 .filter(DayTwo::isSafeWithDampener)
                 .count();
-
-        System.out.println(safeCount);
     }
 
     private static boolean isSafeReport(int[] report) {

@@ -40,9 +40,33 @@ public class DayFour {
      * </code></pre>
      * <p>Take a look at the little Elf's word search. <strong>How many times does <code>XMAS</code> appear?</strong></p>
      */
-    public static void partOne() {
-        System.out.print("4-1 : ");
-        System.out.println(countOccurrences());
+    public static int partOne() {
+        int rows = DayFour.day4XmasArr.length;
+        int cols = DayFour.day4XmasArr[0].length();
+        int count = 0;
+
+        int[][] directions = {
+                {0, 1},
+                {0, -1},
+                {1, 0},
+                {-1, 0},
+                {1, 1},
+                {-1, -1},
+                {1, -1},
+                {-1, 1}
+        };
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                for (int[] dir : directions) {
+                    if (matches(r, c, dir[0], dir[1], rows, cols)) {
+                        count++;
+                    }
+                }
+            }
+        }
+
+        return count;
     }
 
     /**
@@ -70,52 +94,7 @@ public class DayFour {
      * <p>In this example, an <code>X-MAS</code> appears <code><em>9</em></code> times.</p>
      * <p>Flip the word search from the instructions back over to the word search side and try again. <strong>How many times does an <code>X-MAS</code> appear?</strong></p>
      */
-    public static void partTwo() {
-        System.out.print("4-2 : ");
-        System.out.println(countXMASPatterns());
-    }
-
-    private static int countOccurrences() {
-        int rows = DayFour.day4XmasArr.length;
-        int cols = DayFour.day4XmasArr[0].length();
-        int count = 0;
-
-        int[][] directions = {
-                {0, 1},
-                {0, -1},
-                {1, 0},
-                {-1, 0},
-                {1, 1},
-                {-1, -1},
-                {1, -1},
-                {-1, 1}
-        };
-
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < cols; c++) {
-                for (int[] dir : directions) {
-                    if (matches(r, c, dir[0], dir[1], rows, cols)) {
-                        count++;
-                    }
-                }
-            }
-        }
-        return count;
-    }
-
-    private static boolean matches(int r, int c, int dr, int dc, int rows, int cols) {
-        for (int i = 0; i < "XMAS".length(); i++) {
-            int nr = r + i * dr;
-            int nc = c + i * dc;
-
-            if (nr < 0 || nr >= rows || nc < 0 || nc >= cols || DayFour.day4XmasArr[nr].charAt(nc) != "XMAS".charAt(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private static int countXMASPatterns() {
+    public static int partTwo() {
         int rows = DayFour.day4XmasArr.length;
         int cols = DayFour.day4XmasArr[0].length();
         int count = 0;
@@ -129,7 +108,20 @@ public class DayFour {
                 }
             }
         }
+
         return count;
+    }
+
+    private static boolean matches(int r, int c, int dr, int dc, int rows, int cols) {
+        for (int i = 0; i < "XMAS".length(); i++) {
+            int nr = r + i * dr;
+            int nc = c + i * dc;
+
+            if (nr < 0 || nr >= rows || nc < 0 || nc >= cols || DayFour.day4XmasArr[nr].charAt(nc) != "XMAS".charAt(i)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static boolean isValidXMAS(int r, int c) {

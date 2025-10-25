@@ -13,8 +13,7 @@ public class DayThree {
      * <p>Only the four highlighted sections are real <code>mul</code> instructions. Adding up the result of each instruction produces <code><em>161</em></code> (<code>2*4 + 5*5 + 11*8 + 8*5</code>).</p>
      * <p>Scan the corrupted memory for uncorrupted <code>mul</code> instructions. <strong>What do you get if you add up all the results of the multiplications?</strong></p>
      */
-    public static void partOne() {
-        System.out.print("3-1 : ");
+    public static int partOne() {
         String regex = "mul\\((\\d+),(\\d+)\\)";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(Inputs.day3Program);
@@ -26,7 +25,7 @@ public class DayThree {
             total += Integer.parseInt(firstValue) * Integer.parseInt(secondValue);
         }
 
-        System.out.println(total);
+        return total;
     }
 
     /**
@@ -43,8 +42,7 @@ public class DayThree {
      * <p>This time, the sum of the results is <code><em>48</em></code> (<code>2*4 + 8*5</code>).</p>
      * <p>Handle the new instructions; <strong>what do you get if you add up all the results of just the enabled multiplications?</strong></p>
      */
-    public static void partTwo() {
-        System.out.print("3-2 : ");
+    public static int partTwo() {
         String regex = "mul\\((\\d+),(\\d+)\\)|do\\(\\)|don't\\(\\)";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(Inputs.day3Program);
@@ -68,6 +66,6 @@ public class DayThree {
             }
         }
 
-        System.out.println(total);
+        return total;
     }
 }

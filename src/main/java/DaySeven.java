@@ -28,8 +28,7 @@ public class DaySeven {
      * <p>The engineers just need the <em>total calibration result</em>, which is the sum of the test values from just the equations that could possibly be true. In the above example, the sum of the test values for the three equations listed above is <code><em>3749</em></code>.</p>
      * <p>Determine which equations could possibly be true. <strong>What is their total calibration result?</strong></p>
      */
-    public static void partOne() {
-        System.out.print("7-1 : ");
+    public static long partOne() {
         long total = 0;
         for (String equation : Inputs.day7Equations.split("\n")) {
             String[] eq = equation.split(": ");
@@ -40,8 +39,7 @@ public class DaySeven {
                 total += target;
             }
         }
-
-        System.out.println(total);
+        return total;
     }
 
     /**
@@ -56,8 +54,7 @@ public class DaySeven {
      * <p>Adding up all six test values (the three that could be made before using only <code>+</code> and <code>*</code> plus the new three that can now be made by also using <code>||</code>) produces the new <em>total calibration result</em> of <code><em>11387</em></code>.</p>
      * <p>Using your new knowledge of elephant hiding spots, determine which equations could possibly be true. <strong>What is their total calibration result?</strong></p>
      */
-    public static void partTwo() {
-        System.out.print("7-2 : ");
+    public static BigInteger partTwo() {
         BigInteger total = BigInteger.ZERO;
         for (String equation : Inputs.day7Equations.split("\n")) {
             String[] eq = equation.split(": ");
@@ -68,7 +65,7 @@ public class DaySeven {
                 total = total.add(target);
             }
         }
-        System.out.println(total);
+        return total;
     }
 
 

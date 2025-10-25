@@ -96,8 +96,7 @@ public class DaySix {
      * <p>In this example, the guard will visit <code><em>41</em></code> distinct positions on your map.</p>
      * <p>Predict the path of the guard. <strong>How many distinct positions will the guard visit before leaving the mapped area?</strong></p>
      */
-    public static void partOne() {
-        System.out.print("6-1 : ");
+    public static int partOne() {
         String[] map = Inputs.day6Map.split("\n");
         int rows = map.length;
         int cols = map[0].length();
@@ -153,7 +152,7 @@ public class DaySix {
             visitedStates.add(nextState);
         }
 
-        System.out.println(visitedTiles.size());
+        return visitedStates.size();
     }
 
     /**
@@ -243,8 +242,7 @@ public class DaySix {
      * <p>It doesn't really matter what you choose to use as an obstacle so long as you and The Historians can put it into position without the guard noticing. The important thing is having enough options that you can find one that minimizes time paradoxes, and in this example, there are <code><em>6</em></code> different positions you could choose.</p>
      * <p>You need to get the guard stuck in a loop by adding a single new obstruction. <strong>How many different positions could you choose for this obstruction?</strong></p>
      */
-    public static void partTwo() {
-        System.out.print("6-2 : ");
+    public static int partTwo() {
         String[] originalMap = Inputs.day6Map.split("\n");
         int rows = originalMap.length;
         int cols = originalMap[0].length();
@@ -289,7 +287,7 @@ public class DaySix {
             }
         }
 
-        System.out.println(loopCount);
+        return loopCount;
     }
 
     private static String state(int row, int col, int dir) {

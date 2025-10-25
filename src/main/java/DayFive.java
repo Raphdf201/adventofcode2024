@@ -74,33 +74,7 @@ public class DayFive {
      * <p>Of course, you'll need to be careful: the actual list of <em>page ordering rules</em> is bigger and more complicated than the above example.</p>
      * <p>Determine which updates are already in the correct order. <strong>What do you get if you add up the middle page number from those correctly-ordered updates?</strong></p>
      */
-    public static void partOne() {
-        System.out.print("5-1 : ");
-        System.out.println(solve());
-    }
-
-    /**
-     * <p>While the Elves get to work printing the correctly-ordered updates, you have a little time to fix the rest of them.</p>
-     * <p>For each of the <em>incorrectly-ordered updates</em>, use the page ordering rules to put the page numbers in the right order. For the above example, here are the three incorrectly-ordered updates and their correct orderings:</p>
-     * <ul>
-     * <li><code>75,97,47,61,53</code> becomes <code>97,75,<em>47</em>,61,53</code>.</li>
-     * <li><code>61,13,29</code> becomes <code>61,<em>29</em>,13</code>.</li>
-     * <li><code>97,13,75,29,47</code> becomes <code>97,75,<em>47</em>,29,13</code>.</li>
-     * </ul>
-     * <p>After taking <em>only the incorrectly-ordered updates</em> and ordering them correctly, their middle page numbers are <code>47</code>, <code>29</code>, and <code>47</code>. Adding these together produces <code><em>123</em></code>.</p>
-     * <p>Find the updates which are not in the correct order. <strong>What do you get if you add up the middle page numbers after correctly ordering just those updates?</strong></p>
-     */
-    public static void partTwo() {
-        System.out.print("5-2 : ");
-        System.out.println(solvePartTwo());
-    }
-
-    private static int getMiddlePage(List<Integer> update) {
-        int midIndex = update.size() / 2;
-        return update.get(midIndex);
-    }
-
-    private static int solve() {
+    public static int partOne() {
         Map<Integer, List<Integer>> graph = new HashMap<>();
 
         for (String rule : ruleLines) {
@@ -126,23 +100,18 @@ public class DayFive {
         return sumOfMiddlePages;
     }
 
-    private static boolean isValidOrder(List<Integer> update, Map<Integer, List<Integer>> graph) {
-        Set<Integer> updateSet = new HashSet<>(update);
-
-        for (Map.Entry<Integer, List<Integer>> entry : graph.entrySet()) {
-            int before = entry.getKey();
-            for (int after : entry.getValue()) {
-                if (updateSet.contains(before) && updateSet.contains(after)) {
-                    if (update.indexOf(before) > update.indexOf(after)) {
-                        return false;
-                    }
-                }
-            }
-        }
-        return true;
-    }
-
-    private static int solvePartTwo() {
+    /**
+     * <p>While the Elves get to work printing the correctly-ordered updates, you have a little time to fix the rest of them.</p>
+     * <p>For each of the <em>incorrectly-ordered updates</em>, use the page ordering rules to put the page numbers in the right order. For the above example, here are the three incorrectly-ordered updates and their correct orderings:</p>
+     * <ul>
+     * <li><code>75,97,47,61,53</code> becomes <code>97,75,<em>47</em>,61,53</code>.</li>
+     * <li><code>61,13,29</code> becomes <code>61,<em>29</em>,13</code>.</li>
+     * <li><code>97,13,75,29,47</code> becomes <code>97,75,<em>47</em>,29,13</code>.</li>
+     * </ul>
+     * <p>After taking <em>only the incorrectly-ordered updates</em> and ordering them correctly, their middle page numbers are <code>47</code>, <code>29</code>, and <code>47</code>. Adding these together produces <code><em>123</em></code>.</p>
+     * <p>Find the updates which are not in the correct order. <strong>What do you get if you add up the middle page numbers after correctly ordering just those updates?</strong></p>
+     */
+    public static int partTwo() {
         Map<Integer, List<Integer>> graph = buildGraph();
 
         int fixedMiddleSum = 0;
@@ -158,6 +127,26 @@ public class DayFive {
         return fixedMiddleSum;
     }
 
+    private static int getMiddlePage(List<Integer> update) {
+        int midIndex = update.size() / 2;
+        return update.get(midIndex);
+    }
+
+    private static boolean isValidOrder(List<Integer> update, Map<Integer, List<Integer>> graph) {
+        Set<Integer> updateSet = new HashSet<>(update);
+
+        for (Map.Entry<Integer, List<Integer>> entry : graph.entrySet()) {
+            int before = entry.getKey();
+            for (int after : entry.getValue()) {
+                if (updateSet.contains(before) && updateSet.contains(after)) {
+                    if (update.indexOf(before) > update.indexOf(after)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 
     private static Map<Integer, List<Integer>> buildGraph() {
         Map<Integer, List<Integer>> graph = new HashMap<>();

@@ -34,15 +34,14 @@ public class DayOne {
      * <p>To find the <em>total distance</em> between the left list and the right list, add up the distances between all the pairs you found. In the example above, this is <code>2 + 1 + 0 + 1 + 2 + 5</code>, a total distance of <code><em>11</em></code>!</p>
      * <p>Your actual left and right lists contain many location IDs. <strong>What is the total distance between your lists?</strong></p>
      */
-    public static void partOne() {
-        System.out.print("1-1 : ");
+    public static int partOne() {
         sortLists();
         int dist = 0;
         for (int i = 0; i < Inputs.day1LeftList.length; i++) {
             dist += Math.abs(Inputs.day1LeftList[i] - Inputs.day1RightList[i]);
         }
 
-        System.out.println(dist);
+        return dist;
     }
 
     /**
@@ -71,8 +70,7 @@ public class DayOne {
      * <p>So, for these example lists, the similarity score at the end of this process is <code><em>31</em></code> (<code>9 + 4 + 0 + 0 + 9 + 9</code>).</p>
      * <p>Once again consider your left and right lists. <strong>What is their similarity score?</strong></p>
      */
-    public static void partTwo() {
-        System.out.print("1-2 : ");
+    public static int partTwo() {
         sortLists();
         int score = 0;
         Map<Integer, Integer> rightMap = getNumberOccurrences();
@@ -86,7 +84,7 @@ public class DayOne {
             score += num * occs;
         }
 
-        System.out.println(score);
+        return score;
     }
 
     private static void sortLists() {
