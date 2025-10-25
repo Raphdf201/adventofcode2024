@@ -1,6 +1,0 @@
-plugins {
-    id 'java'
-}
-
-group = 'net.raphdf201.adventofcode2024'
-version = '1.0-SNAPSHOT'

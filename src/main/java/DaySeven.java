@@ -1,12 +1,6 @@
-package net.raphdf201.adventofcode2024;
-
 import java.math.BigInteger;
 
-import static net.raphdf201.adventofcode2024.Inputs.day7Equations;
-
 public class DaySeven {
-    private static final String[] lines = day7Equations.split("\n");
-
     /**
      * <p>The Historians take you to a familiar <a href="https://adventofcode/2022/day/9">rope bridge</a> over a river in the middle of a jungle. The Chief isn't on this side of the bridge, though; maybe he's on the other side?</p>
      * <p>When you go to cross the bridge, you notice a group of engineers trying to repair it. (Apparently, it breaks pretty frequently.) You won't be able to cross until it's fixed.</p>
@@ -37,7 +31,7 @@ public class DaySeven {
     public static void partOne() {
         System.out.print("7-1 : ");
         long total = 0;
-        for (String equation : lines) {
+        for (String equation : Inputs.day7Equations.split("\n")) {
             String[] eq = equation.split(": ");
             long target = Long.parseLong(eq[0]);
             int[] numbers = toIntArray(eq[1].split(" "));
@@ -65,7 +59,7 @@ public class DaySeven {
     public static void partTwo() {
         System.out.print("7-2 : ");
         BigInteger total = BigInteger.ZERO;
-        for (String equation : lines) {
+        for (String equation : Inputs.day7Equations.split("\n")) {
             String[] eq = equation.split(": ");
             BigInteger target = new BigInteger(eq[0]);
             int[] numbers = toIntArray(eq[1].split(" "));

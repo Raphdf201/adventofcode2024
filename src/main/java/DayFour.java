@@ -1,9 +1,5 @@
-package net.raphdf201.adventofcode2024;
-
-import static net.raphdf201.adventofcode2024.Inputs.day4Xmas;
-
 public class DayFour {
-    public static final String[] day4XmasArr = day4Xmas.split("\n");
+    public static final String[] day4XmasArr = Inputs.day4Xmas.split("\n");
 
     /**
      * <p>"Looks like the Chief's not here. Next!" One of The Historians pulls out a device and pushes the only button on it. After a brief flash, you recognize the interior of the <a href="https://adventofcode.com/2019/day/10">Ceres monitoring station</a>!</p>

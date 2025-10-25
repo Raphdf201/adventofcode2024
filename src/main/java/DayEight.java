@@ -1,11 +1,7 @@
-package net.raphdf201.adventofcode2024;
-
 import java.util.*;
 
-import static net.raphdf201.adventofcode2024.Inputs.day8Map;
-
 public class DayEight {
-    private static final List<String> map = Arrays.stream(day8Map.split("\n")).toList();
+    private static final List<String> map = Arrays.stream(Inputs.day8Map.split("\n")).toList();
 
     /**
      * <p>You find yourselves on the <a href="https://adventofcode.com/2016/day/25">roof</a> of a top-secret Easter Bunny installation.</p>

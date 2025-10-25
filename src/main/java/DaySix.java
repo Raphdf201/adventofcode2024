@@ -1,9 +1,5 @@
-package net.raphdf201.adventofcode2024;
-
 import java.util.HashSet;
 import java.util.Set;
-
-import static net.raphdf201.adventofcode2024.Inputs.day6Map;
 
 public class DaySix {
     private static final char[] DIRECTIONS = {'^', '>', 'v', '<'}; // Up, Right, Down, Left
@@ -102,7 +98,7 @@ public class DaySix {
      */
     public static void partOne() {
         System.out.print("6-1 : ");
-        String[] map = day6Map.split("\n");
+        String[] map = Inputs.day6Map.split("\n");
         int rows = map.length;
         int cols = map[0].length();
 
@@ -249,7 +245,7 @@ public class DaySix {
      */
     public static void partTwo() {
         System.out.print("6-2 : ");
-        String[] originalMap = day6Map.split("\n");
+        String[] originalMap = Inputs.day6Map.split("\n");
         int rows = originalMap.length;
         int cols = originalMap[0].length();
 

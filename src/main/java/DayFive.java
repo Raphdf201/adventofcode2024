@@ -1,6 +1,11 @@
-package net.raphdf201.adventofcode2024;
-
-import java.util.*;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Queue;
 
 public class DayFive {
     private static final String[] ruleLines = Inputs.day5Rules.split("\n");

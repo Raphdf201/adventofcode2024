@@ -1,9 +1,5 @@
-package net.raphdf201.adventofcode2024;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static net.raphdf201.adventofcode2024.Inputs.day3Program;
 
 public class DayThree {
     /**
@@ -21,7 +17,7 @@ public class DayThree {
         System.out.print("3-1 : ");
         String regex = "mul\\((\\d+),(\\d+)\\)";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(day3Program);
+        Matcher matcher = pattern.matcher(Inputs.day3Program);
         int total = 0;
 
         while (matcher.find()) {
@@ -51,7 +47,7 @@ public class DayThree {
         System.out.print("3-2 : ");
         String regex = "mul\\((\\d+),(\\d+)\\)|do\\(\\)|don't\\(\\)";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(day3Program);
+        Matcher matcher = pattern.matcher(Inputs.day3Program);
         boolean isEnabled = true;
         int total = 0;
 

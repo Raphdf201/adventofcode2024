@@ -1,11 +1,6 @@
-package net.raphdf201.adventofcode2024;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-
-import static net.raphdf201.adventofcode2024.Inputs.day1LeftList;
-import static net.raphdf201.adventofcode2024.Inputs.day1RightList;
 
 public class DayOne {
     /**
@@ -43,8 +38,8 @@ public class DayOne {
         System.out.print("1-1 : ");
         sortLists();
         int dist = 0;
-        for (int i = 0; i < day1LeftList.length; i++) {
-            dist += Math.abs(day1LeftList[i] - day1RightList[i]);
+        for (int i = 0; i < Inputs.day1LeftList.length; i++) {
+            dist += Math.abs(Inputs.day1LeftList[i] - Inputs.day1RightList[i]);
         }
 
         System.out.println(dist);
@@ -81,7 +76,7 @@ public class DayOne {
         sortLists();
         int score = 0;
         Map<Integer, Integer> rightMap = getNumberOccurrences();
-        for (int num : day1LeftList) {
+        for (int num : Inputs.day1LeftList) {
             int occs;
             try {
                 occs = rightMap.get(num);
@@ -95,8 +90,8 @@ public class DayOne {
     }
 
     private static void sortLists() {
-        Arrays.sort(day1LeftList);
-        Arrays.sort(day1RightList);
+        Arrays.sort(Inputs.day1LeftList);
+        Arrays.sort(Inputs.day1RightList);
     }
 
     private static Map<Integer, Integer> getNumberOccurrences() {

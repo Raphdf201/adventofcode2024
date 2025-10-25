@@ -1,8 +1,4 @@
-package net.raphdf201.adventofcode2024;
-
 import java.util.Arrays;
-
-import static net.raphdf201.adventofcode2024.Inputs.day2Reports;
 
 public class DayTwo {
     /**
@@ -38,7 +34,7 @@ public class DayTwo {
      */
     public static void partOne() {
         System.out.print("2-1 : ");
-        String[] rows = day2Reports.split("\n");
+        String[] rows = Inputs.day2Reports.split("\n");
         int[][] serialized = new int[rows.length][];
         for (int i = 0; i < rows.length; i++) {
             String[] levels = rows[i].split(" ");
@@ -71,7 +67,7 @@ public class DayTwo {
      */
     public static void partTwo() {
         System.out.print("2-2 : ");
-        String[] rows = day2Reports.split("\n");
+        String[] rows = Inputs.day2Reports.split("\n");
         int[][] serialized = new int[rows.length][];
         for (int i = 0; i < rows.length; i++) {
             String[] levels = rows[i].split(" ");
