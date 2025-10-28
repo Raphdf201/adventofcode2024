@@ -1,3 +1,5 @@
+package y2024;
+
 import java.util.Arrays;
 
 public class DayTwo {

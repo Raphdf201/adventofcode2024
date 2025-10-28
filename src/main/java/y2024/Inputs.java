@@ -1,3 +1,5 @@
+package y2024;
+
 public class Inputs {
     public static final int[] day1LeftList = {
             27484,

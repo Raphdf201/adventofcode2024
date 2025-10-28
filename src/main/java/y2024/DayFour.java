@@ -1,3 +1,5 @@
+package y2024;
+
 public class DayFour {
     public static final String[] day4XmasArr = Inputs.day4Xmas.split("\n");
 

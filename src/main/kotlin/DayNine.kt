@@ -1,3 +1,5 @@
+import y2024.Inputs
+
 class DayNine {
     companion object {
         fun partOne(): Long {
